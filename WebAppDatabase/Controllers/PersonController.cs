@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebAppDatabase.Models;
 
 namespace WebAppDatabase.Controllers
@@ -82,6 +84,44 @@ namespace WebAppDatabase.Controllers
             return View(updatedPerson);
         }
 
+        [HttpGet("Person/Delete/{personId}")]
+        public IActionResult Delete(int personId)
+        {
+            var person = _context.Persons.Find(personId);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return View(person);
+        }
+
+        [HttpPost("Person/Delete/{personId}")]
+        [ActionName("Delete")]
+        public IActionResult Delete(int personId, Person delPerson)
+        {
+            if (personId != delPerson.PersonId)
+            {
+                return BadRequest();
+            }
+
+                    _context.Persons.Remove(delPerson);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                    return View(delPerson);
+       
+        }
+
+
+        [HttpGet("Person/Details/{personId}")]
+        public IActionResult Details(int personId)
+        {
+            var person = _context.Persons.Find(personId);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return View(person); 
+        }
     }
 
 }
