@@ -44,7 +44,7 @@ namespace WebAppDatabase.Controllers
         }
 
         // GET: Edit{id}
-        [HttpGet("Person/Editperson/{personId}")]
+        [HttpGet("Person/Edit/{personId}")]
         public IActionResult Editperson(int personId)
         {
             var person = _context.Persons.Find(personId);
@@ -55,11 +55,11 @@ namespace WebAppDatabase.Controllers
             return View(person);
         }
 
-        [HttpPost]
-        [ActionName("Editperson")]
-        public IActionResult Editperson(int PersonId, Person updatedPerson)
+        [HttpPost("Person/Edit/{personId}")]
+        [ActionName("Edit")]
+        public IActionResult Editperson(int personId, Person updatedPerson)
         {
-            if (PersonId != updatedPerson.PersonId)
+            if (personId != updatedPerson.PersonId)
             {
                 return BadRequest();
             }
