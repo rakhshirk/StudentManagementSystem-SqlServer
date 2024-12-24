@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using WebAppDatabase.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace WebAppDatabase.Controllers
 {
@@ -16,7 +18,7 @@ namespace WebAppDatabase.Controllers
             var teachers = _context.Teachers.ToArray();
             return View(teachers);
         }
-
+        
         public IActionResult AddTeacher()
         {
             return View();
@@ -29,18 +31,20 @@ namespace WebAppDatabase.Controllers
             {
                 try
                 {
-                    _context.Teachers.Add(teach); // Do not set pm.PersonId manually
+                    _context.Teachers.Add(teach);
                     _context.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
-                    // Log or handle exception
+                  
                     ViewBag.ErrorMessage = "An error occurred: " + ex.Message;
                     return View(teach);
                 }
             }
             return View(teach);
         }
+   
     }
+
 }

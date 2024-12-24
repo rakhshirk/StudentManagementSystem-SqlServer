@@ -17,22 +17,22 @@ namespace WebAppDatabase.Models
 
 
         [Column("Name")]
-        public string Name { get; set; }
+        public string Name { get; set; } = "null";
 
         [Column("FatherName")]
-        public string FatherName { get; set; }
+        public string FatherName { get; set; } = "null";
 
         [Column("Address")]
-        public string Address { get; set; }
+        public string Address { get; set; } = "null";
 
         [Column("City")]
-        public string City { get; set; }
+        public string City { get; set; } = "null";
 
         [Column("Phone")]
-        public string Phone { get; set; }
+        public string Phone { get; set; } = "null";
 
         [Column("Email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = "null";
 
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using WebAppDatabase.Data;
 
 namespace WebAppDatabase.Models
 {
@@ -15,23 +17,23 @@ namespace WebAppDatabase.Models
 
         public int PersonId { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = "null";
 
-        public string FatherName { get; set; }
+        public string FatherName { get; set; } = "null";
 
-        public string Address { get; set; }
+        public string Address { get; set; } = "null";
 
-        public string City { get; set; }
+        public string City { get; set; } = "null";
 
-        public string Phone { get; set; }
+        public string Phone { get; set; } = "null";
 
-        public string Email { get; set; }
+        public string Email { get; set; } = "null";
 
-        public byte Year { get; set; }
+        public byte Year { get; set; } = 0;
 
-        public byte Month { get; set; }
+        public byte Month { get; set; } = 0;
 
-        public string Degree { get; set; }
+        public string Degree { get; set; } = "null";
 
     }
 
